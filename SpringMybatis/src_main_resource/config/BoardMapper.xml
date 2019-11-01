@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper file: 실행 할 쿼리 문을 저장하는 파일. 테이블 하나당 한개씩 작성
+namespace: 작업하는 테이블들을 구분해주기 위한 식별자 -->
+<mapper namespace="board">
+
+<!-- 리절트 맵 정의 : select 한 후의 결과 처리를 위해 정의 해 놓음-->
+   <resultMap id="BoardResult"  type="Board"><!-- type에 alias -->
+     <result property="num" column="num"/>
+     <result property="name" column="name"/>
+     <result property="address" column="address"/>
+   </resultMap>
+   
+   <resultMap id="JoinResult"  type="Board"><!-- type에 alias -->
+     <result property="num" column="empid"/>
+     <result property="name" column="fname"/>
+     <result property="address" column="deptname"/>
+   </resultMap>
+   
+   <select id="joinSelect" resultMap="JoinResult">
+   	select e.empid empid, e.fname fname, d.deptname deptname
+   	from emp e, dept d
+   	where e.deptid = d.deptid
+   </select>
+   
+ 					<!-- resultType="Board" 라고 해도 된다. -->
+  <select id="selectAll" resultMap="BoardResult">
+    select * from board order by num desc
+  </select>
+  
+  <select id="selectOne" resultMap="BoardResult" parameterType="java.lang.String">
+  	select * from board where num = #{num}
+  </select>
+	
+  <insert id="insert" parameterType="board">
+  	insert into board values(#{num}, #{pass}, #{name}, curdate(), #{title}, #{content}, #{count})
+  </insert>
+  
+  <delete id="delete" parameterType="String">
+ 	delete from board where num = #{num}
+  </delete>
+  
+  <update id="update" parameterType="board">
+  	update board set title = #{title}, content = #{content} where num = #{num}
+  </update>
+  
+  <select id="findByTitle" resultMap="BoardResult" parameterType="String">
+  	select * from board where title = #{title}
+  </select>
+  
+  <select id="findByName" resultMap="BoardResult" parameterType="String">
+  	select * from board where name = #{name}
+  </select>
+  
+  <select id="findByTitle2" resultMap="BoardResult" parameterType="String">
+  	select * from board where title like #{title}
+  </select>
+  
+  
+
+
+</mapper>
+
+
+
+
+
+
