@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+	
+<mapper namespace="phone">
+	
+	<select id="selectAll" resultType="Phone">
+		select p.num num, p.model model, p.price price, c.vendor vcode
+		from phones p, company c
+		where p.vcode = c.vcode
+	</select>
+	
+	<insert id="insert"	parameterType="Phone">
+		insert into phones values( #{num},#{model},#{price},#{vcode} )
+	</insert>
+	
+	
+	<select id="selectOne" resultType="Phone" parameterType="java.lang.String">
+		select p.num num, p.model model, p.price price, c.vendor vcode
+		from phones p, company c 
+		where num = #{num} and p.vcode = c.vcode;
+	</select>
+	
+	<delete id="delete" parameterType="java.lang.String">
+		delete from phones where num = #{num}
+	</delete>
+	
+	<update id="update" parameterType="java.lang.String">
+		update phones set model = #{model} where num = #{num}
+	</update>
+	
+</mapper>
