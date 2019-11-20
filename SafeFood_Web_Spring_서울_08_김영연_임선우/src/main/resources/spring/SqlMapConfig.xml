@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 1. typeAliases -->
+    <typeAliases>
+        <typeAlias alias="Member" type="com.vo.Member"/>
+        <typeAlias alias="Food" type="com.vo.Food"/>
+        <typeAlias alias="Board" type="com.vo.Board"/>
+        
+    </typeAliases>
+
+    <!-- 3. mapper file: table&object mapping -->
+    <mappers>
+      <mapper resource="spring/MemberMapper.xml" />
+      <mapper resource="spring/FoodMapper.xml" />
+      <mapper resource="spring/BoardMapper.xml" />
+    </mappers>
+
+</configuration>
+
+
+

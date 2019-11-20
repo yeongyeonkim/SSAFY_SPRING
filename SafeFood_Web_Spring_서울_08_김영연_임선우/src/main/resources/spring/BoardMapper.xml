@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<resultMap id="BoardResult" type="Board">
+        <result property="num" column="num"/>
+        <result property="pass" column="pass"/>
+        <result property="name" column="name"/>
+        <result property="wdate" column="wdate"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="count" column="count"/>
+    </resultMap>
+
+	<select id="selectAll" resultMap="BoardResult">
+		select * from board
+	</select>
+
+	<select id="selectOne" resultType="Board" parameterType="java.lang.String">
+		select * from board where num = #{num}
+	</select>
+	<insert id="insert" parameterType="Board" >
+		insert into board values(#{num}, #{pass}, #{name}, curdate(), #{title}, #{content}, #{count})
+    </insert>
+
+	<delete id="delete" parameterType="java.lang.String">
+		delete from board where num = #{num}
+    </delete>
+	
+	<select id="findByName" resultType="Board" parameterType="java.lang.String">
+		select * from board where name like #{name}
+	</select>
+	
+	<select id="findByTitle" resultType="Board" parameterType="java.lang.String">
+		select * from board where title like #{title}
+	</select>
+</mapper>

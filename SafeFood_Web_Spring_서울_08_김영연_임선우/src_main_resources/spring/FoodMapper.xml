@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 실행할 query문이 들어있는 파일 
+namespace: 사용할 도메인(테이블)을 구분하기 위해서 붙이는 식별자-->
+
+<mapper namespace="food">
+
+	<!-- 리절트 맵 정의 : select후의 결과 처리를 위한 부분
+	type에서 지정한 vo를 생성한 후 테이블의 컬럼에서 캆을 뽑아 vo에 setting 
+	그리고 그 vo는 List에 저장되어 리턴 됨 -->
+   <resultMap id="FoodResult"  type="Food">
+     <result property="code" column="code"/>
+     <result property="name" column="name"/>
+     <result property="supportpereat" column="supportpereat"/>
+     <result property="calory" column="calory"/>
+     <result property="carbo" column="carbo"/>
+     <result property="protein" column="protein"/>
+     <result property="fat" column="fat"/>
+     <result property="sugar" column="sugar"/>
+     <result property="natrium" column="natrium"/>
+     <result property="chole" column="chole"/>
+     <result property="fattyacid" column="fattyacid"/>
+     <result property="transfat" column="transfat"/>
+     <result property="maker" column="maker"/>
+     <result property="material" column="material"/>
+     <result property="img" column="img"/>     
+   </resultMap>
+
+  <select id="selectAll" resultMap="FoodResult">
+    select * from food
+  </select>
+
+  <select id="selectOne" parameterType="int" resultMap="FoodResult">
+    select * from food where code = #{code} <!-- parameter ?로 쓰던걸 mybatis에선 #{num}이런식으로. -->
+  </select>
+
+  <select id="selectName" parameterType="java.lang.String" resultMap="FoodResult">
+    select * from food where name like #{name}
+  </select>
+  
+  <select id="selectMaker" parameterType="java.lang.String" resultMap="FoodResult">
+    select * from food where maker like #{maker}
+  </select>
+  
+  <select id="selectMaterial" parameterType="java.lang.String" resultMap="FoodResult">
+    select * from food where material like #{material}
+  </select>
+</mapper>

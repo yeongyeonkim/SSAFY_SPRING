@@ -1,0 +1,67 @@
+.view, body, html {
+	height: 100%
+}
+
+html, body, header, .carousel {
+	height: 30vh;
+}
+
+.carousel .carousel-inner, .carousel .carousel-inner 
+.active, .carousel 
+.carousel-inner 
+.carousel-item {
+	height: 100%;
+}
+
+@media ( max-width :776px) {
+	.carousel {
+		height: 100%;
+	}
+}
+/* Navbar Color */
+.navbar {
+	background-color: rgba(93, 187, 133, 1)
+}
+
+.page-footer {
+	background-color: #929FBA
+}
+
+.wrapper {
+	margin-top: 100px;
+}
+
+.card-body {
+	min-height: 200px;
+	max-height: 200px;
+	overflow: hidden;
+}
+
+.card-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 120px;
+	display: -webkit-box;
+	-webkit-line-clamp: 5; /* 라인수 */
+	-webkit-box-orient: vertical;
+}
+
+.card img {
+	display: block;
+	width: 150px;
+	height: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.card-footer {
+	height: 70px;
+}
+
+@media only screen and (max-width:768px) {
+	.navbar {
+		background-color: rgba(93, 187, 133, 1)
+	}
+}

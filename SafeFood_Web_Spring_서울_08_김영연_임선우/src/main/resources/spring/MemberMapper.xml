@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 실행할 query문이 들어있는 파일 namespace : 사용할 도메인(테이블) 을 구분하기 위해서 붙이는 식별자(겹치지만 
+	않으면 됨) -->
+<mapper namespace="member">
+	<!-- 리절트 맵 정의: select 후의 결과 처리를 위한 부분 
+	type에서 지정한 vo를 생성한 후 테이블의 컬럼에서 값을 뽑아 vo에 setting해준다
+	vo는 List에 저장되어 리턴 됨 -->
+	<resultMap id="MemberResult" type="Member">
+        <result property="id" column="id" />
+        <result property="password" column="password" />
+        <result property="name" column="name" />
+        <result property="phone" column="phone" />
+        <result property="address" column="address" />
+        <result property="allergy" column="allergy" />
+    </resultMap>
+
+	<select id="selectAll" resultMap="MemberResult">
+		select * from member 
+	</select>
+	 <insert id="insert" parameterType="Member" >
+        insert into member values (#{id}, #{password}, #{name}, #{address}, #{phone}, #{allergy})
+    </insert>
+	 <delete id="delete" parameterType="String">
+        delete from member where id = #{id}
+    </delete>
+	<update id="update" parameterType="java.util.HashMap">
+		update member set name = #{name}, allergy = #{allergy}, phone = #{phone}, address = #{address} where id = #{id}
+	</update>
+	<select id = "selectOne" parameterType="java.lang.String" resultMap = "MemberResult">
+		select * from member where id = #{id}
+	</select>
+</mapper>

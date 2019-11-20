@@ -1,0 +1,40 @@
+.view, body, html {
+	height: 100%
+}
+
+/* Navbar Color */
+.navbar {
+	background-color: rgba(93, 187, 133, 1);
+}
+
+.page-footer {
+	background-color: #929FBA;
+}
+
+img {
+	width: 200px;
+	height: 200px;
+}
+
+.wrapper {
+	margin-top: 100px;
+}
+
+.img-div {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+
+th {
+	width: 20px;
+	word-break:keep-all;
+}
+
+.chart {
+	display: flex;
+  align-items: center;
+  flex-direction: column; 
+  justify-content: center;
+}

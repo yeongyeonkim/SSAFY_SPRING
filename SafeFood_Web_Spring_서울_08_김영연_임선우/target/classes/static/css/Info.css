@@ -1,0 +1,51 @@
+.view, body, html {
+	height: 100%;
+}
+
+.carousel {
+	height: 50%;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+
+html, body, header, .carousel {
+	height: 30vh;
+}
+
+.carousel .carousel-inner, .carousel .carousel-inner 
+.active, .carousel 
+.carousel-inner 
+.carousel-item {
+	height: 100%;
+}
+
+@media ( max-width :776px) {
+	.carousel {
+		height: 100%;
+	}
+}
+
+/* Navbar Color */
+.navbar {
+	background-color: rgba(93, 187, 133, 0.82);
+}
+
+.page-footer{
+	background-color: #929FBA;
+}
+
+@media only screen and (max-width:768px) {
+	.navbar {
+		background-color: rgba(93, 187, 133, 1);
+	}
+}
+
+@media ( max-width : 740px) {
+	html, body, header, .carousel {
+		height: 100vh;
+	}
+}
+
